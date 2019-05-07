@@ -1,0 +1,14 @@
+language: node_js
+node_js:
+  - "stable"
+cache:
+  directories:
+  - node_modules
+command:
+  - /bin/bash
+      - -c
+      - |
+        cd src
+        node app.js
+script:
+  - npm test
