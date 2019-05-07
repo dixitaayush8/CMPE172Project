@@ -69,18 +69,17 @@ class Home extends Component {
     ) : (
       <div>
         <Grid container>
-          <Grid item xs={8} className={classes.landingPage}>
-            <Typography variant="h1">JAIC</Typography>
+          <Grid item lg={12} className={classes.landingPage}>
+            <Typography variant="h1" align = 'center'>JAIC</Typography>
             <Button 
-              color="inherit" 
               variant="contained" 
               size="large"
+              style={{marginLeft:700}}
               className={classes.button}
               onClick={this.login}>
-              Login
+              <Typography >Login</Typography>
             </Button>
           </Grid>
-          <Grid item xs={4}></Grid>
         </Grid>
         
       </div>

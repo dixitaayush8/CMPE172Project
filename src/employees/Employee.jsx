@@ -172,9 +172,7 @@ class Employee extends Component {
                     </Grid>
                     <Grid item xs={2} className={classes.searchButtonContainer}>
                       <Button
-                        variant="contained"
                         className={classes.searchButton}
-                        color="primary"
                         onClick={() => {
                           this.getEmployee();
                         }}
