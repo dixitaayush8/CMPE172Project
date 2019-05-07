@@ -26,7 +26,7 @@ con.connect(function(err) {
   console.log('Connected to database.');
 
 });
-
+//proxying
 app.use(express.static(path.join(__dirname, 'public')))
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
