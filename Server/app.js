@@ -17,7 +17,7 @@ var con = mysql.createConnection({
 
 con.connect(function(err) {
   if (err) throw err;
-  con.query("select dept_name, dept_no, (emp_no) as count, avg(salary) as average from employees join dept_emp using(emp_no) join departments using(dept_no) join salaries using(emp_no, from_date) group by dept_no", function (err, result, fields) {
+  con.query("select dept_name, dept_no, count(emp_no) as count, avg(salary) as average from employees join dept_emp using(emp_no) join departments using(dept_no) join salaries using(emp_no, from_date) group by dept_no", function (err, result, fields) {
     if (err) throw err;
     console.log(result);
   });
@@ -56,7 +56,7 @@ app.get('/api/positioninfo', (req,res) => {
   })
 })
 app.get('/api/departmentinfo',(req, res) => {
-  var sql = SqlString.format('select dept_name, dept_no, (emp_no) as count, avg(salary) as average from employees join dept_emp using(emp_no) join departments using(dept_no) join salaries using(emp_no, from_date) group by dept_no')
+  var sql = SqlString.format('select dept_name, dept_no, count(emp_no) as count, avg(salary) as average from employees join dept_emp using(emp_no) join departments using(dept_no) join salaries using(emp_no, from_date) group by dept_no')
   con.query(sql, function (err, result, fields) {
     if (err) throw err;
     res.send({ result: result });
