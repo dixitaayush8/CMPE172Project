@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Employee from './employees/Employee';
+import Employee from './employees/DepartmentInfo';
 
 it('renders without crashing', () => {
-  const router = document.createElement('Grid');
-  ReactDOM.render(<Employee />, router);
-  ReactDOM.unmountComponentAtNode(router);
+  const router = document.createElement('TableRow');
+  ReactDOM.render(<TableRow />, tableRow);
+  ReactDOM.unmountComponentAtNode(tableRow);
 });
