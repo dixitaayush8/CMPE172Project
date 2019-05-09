@@ -4,6 +4,7 @@ import { Security, ImplicitCallback } from "@okta/okta-react";
 import Directory from "./Directory/Directory";
 import HomePage from "./home/HomePage";
 import HistoryPage from "./employees/HistoryPage";
+import DepartmentInfo from "./employees/DepartmentInfo";
 import WebPortal from "./webportal/WebPortal";
 import Login from "./auth/Login";
 import MuiThemeProvider from "@material-ui/core/styles/MuiThemeProvider";
@@ -55,14 +56,14 @@ class App extends Component {
                     <Route
                       path="/github"
                       component={() =>
-                        (window.location = "https://github.com/login")
+                        (window.location = "http://github.com/login")
                       }
                     />
 
-                    <Route 
+                    <Route
                     path="/facebook"
                     component={() =>
-                      (window.location = "https://facebook.com/login")
+                      (window.location = "http://facebook.com/")
                     }
                     />
 
@@ -73,6 +74,14 @@ class App extends Component {
                         const id = props.match.params.id;
                         return <HistoryPage id={id} />;
                       }}
+                    />
+                    <Route
+                    exact
+                    path="/departmentinfo"
+                    render={props =>
+                      {
+                      return <DepartmentInfo />
+                    }}
                     />
                     <Route
                       exact

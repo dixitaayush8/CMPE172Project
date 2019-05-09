@@ -42,7 +42,7 @@ class Employee extends Component {
   getEmployee = async () => {
     const id = {
       emp_no: this.state.search
-      
+
     };
     const url = new URL("http://localhost:3000/api/employee");
     url.search = new URLSearchParams(id);
@@ -82,7 +82,7 @@ class Employee extends Component {
  <label for="disabled">First Name: </label>
  <input name="disabled" value={this.state.first_name} disabled/>
  </form>
-              
+
                       <form>
  <label for="disabled">Last Name: </label>
  <input name="disabled" value={this.state.last_name} disabled/>
@@ -99,11 +99,11 @@ class Employee extends Component {
  <form>
  <label for="disabled">Gender: </label>
  <input name="disabled" value={this.state.gender} disabled/>
- </form>                      
+ </form>
                       <form>
  <label for="disabled">Hiring Date: </label>
  <input name="disabled" value={this.state.hire_date} disabled/>
- </form>   
+ </form>
 
 
                       <form>
@@ -111,7 +111,7 @@ class Employee extends Component {
  <input name="editable" value={ this.state.salary } onChange={text =>
                           this.setState({ salary: text.target.value })
                         }/>
- </form>   
+ </form>
                   <Button
                     variant="contained"
                     color="primary"
@@ -139,8 +139,11 @@ class Employee extends Component {
   renderSearchBar() {
     const { classes } = this.props;
     return (
+    <div>
       <Grid item>
+
         <Grid container>
+
           <Grid item>
             <Paper>
               <Grid
@@ -181,12 +184,24 @@ class Employee extends Component {
                       </Button>
                     </Grid>
                   </Grid>
+
                 </Grid>
+
               </Grid>
             </Paper>
+
           </Grid>
         </Grid>
       </Grid>
+      <Button
+        className={classes.searchButton}
+        component={Link}
+        to={"/departmentinfo"}
+      >
+        Departments
+      </Button>
+
+      </div>
     );
   }
 
@@ -196,7 +211,7 @@ class Employee extends Component {
       <Grid
         container
         className={classes.root}
-        spacing={8}
+        spacing={1}
         direction="column"
         justify="flex-start"
         alignItems="center"
@@ -273,31 +288,31 @@ const styles = {
   }
 };
 
-const positions = [
-  {
-    value: "Accountant",
-    label: "Accountant"
-  },
-  {
-    value: "Janitor",
-    label: "Janitor"
-  },
-  {
-    value: "Manager",
-    label: "Manager"
-  },
-  {
-    value: "Lead",
-    label: "Lead"
-  },
-  {
-    value: "Intern",
-    label: "Intern"
-  },
-  {
-    value: "Supervisor",
-    label: "Supervisor"
-  }
-];
+// const positions = [
+//   {
+//     value: "Accountant",
+//     label: "Accountant"
+//   },
+//   {
+//     value: "Janitor",
+//     label: "Janitor"
+//   },
+//   {
+//     value: "Manager",
+//     label: "Manager"
+//   },
+//   {
+//     value: "Lead",
+//     label: "Lead"
+//   },
+//   {
+//     value: "Intern",
+//     label: "Intern"
+//   },
+//   {
+//     value: "Supervisor",
+//     label: "Supervisor"
+//   }
+// ];
 
 export default withStyles(styles)(Employee);

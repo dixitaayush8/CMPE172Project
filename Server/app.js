@@ -17,7 +17,7 @@ var con = mysql.createConnection({
 
 con.connect(function(err) {
   if (err) throw err;
-  con.query("select * from employees join salaries using(emp_no) where emp_no = 10001 ORDER BY from_date DESC LIMIT 5", function (err, result, fields) {
+  con.query("select dept_name, dept_no, count(*) as count from employees join dept_emp using(emp_no) join departments using(dept_no) group by dept_no", function (err, result, fields) {
     if (err) throw err;
     console.log(result);
   });
@@ -57,6 +57,14 @@ app.use(cookieParser());
     res.send({ result: result });
   })
 });*/
+
+app.get('/api/departmentinfo',(req, res) => {
+  var sql = SqlString.format('select dept_name, dept_no, count(*) as count from employees join dept_emp using(emp_no) join departments using(dept_no) group by dept_no')
+  con.query(sql, function (err, result, fields) {
+    if (err) throw err;
+    res.send({ result: result });
+  })
+})
 
 app.get('/api/newsalary', (req, res) => {
   var sql = SqlString.format('update salaries set salary = ? where emp_no = ? and from_date = ?', [req.query.salary, req.query.emp_no, req.query.from_date])

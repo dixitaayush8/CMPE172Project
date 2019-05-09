@@ -12,7 +12,7 @@ import { Link } from "react-router-dom";
 
 const styles = {
   button: {
-    marginTop: 10 
+    marginTop: 10
   },
   landingPage: {
     marginTop: '10%',
@@ -69,10 +69,10 @@ class Home extends Component {
     ) : (
       <div>
         <Grid container>
-          <Grid item lg={12} className={classes.landingPage}>
-            <Typography variant="h1" align = 'center'>JAIC</Typography>
-            <Button 
-              variant="contained" 
+          <Grid item lg={8} className={classes.landingPage}>
+            <Typography variant="h2" align = 'center'>JAIC</Typography>
+            <Button
+              variant="contained"
               size="large"
               style={{marginLeft:700}}
               className={classes.button}
@@ -81,7 +81,7 @@ class Home extends Component {
             </Button>
           </Grid>
         </Grid>
-        
+
       </div>
     );
 
@@ -91,7 +91,7 @@ class Home extends Component {
       {isAuthenticated}
       </div>
     );
-    
+
   }
 } export default withAuth(
     withStyles(styles)(Home)
