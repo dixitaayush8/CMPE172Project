@@ -66,9 +66,10 @@ renderTable() {
       <p>---------------------</p>
       <TableRow className={classes.row} key={row.dept_no}>
           <p>
-            <b>Salary: </b>{row.dept_name}
+            <b>Department: </b>{row.dept_name}
           </p>
           <p><b>Count: </b>{row.count}</p>
+          <p><b>Average Salary: </b>{row.average}</p>
         </TableRow>
         </div>
       );

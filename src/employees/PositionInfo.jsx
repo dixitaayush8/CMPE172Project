@@ -69,6 +69,7 @@ renderTable() {
             <b>Job Title: </b>{row.title}
           </p>
           <p><b>Count: </b>{row.count}</p>
+          <p><b>Average Salary: </b>{row.average}</p>
         </TableRow>
         </div>
       );
