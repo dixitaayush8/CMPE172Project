@@ -36,15 +36,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
-/*app.get('/api/getTotalCount', (req, res) => {
-  console.log(process.env.PORT)
-  connection.query('select count(*) as totalCount from employees', function (err, c, fields) {
-    if (err) throw err
-    console.log('Total count: ', c[0].totalCount)
-    res.send({ totalCount: c[0].totalCount });
-  })
-});*/
-
 //employee = [emp_no: '000', birth_date: '00', first_name: 'Winnie', last_name: 'Australia', gender: 'M', hire_date: '000'];
 /*app.get('/api/create', (req, res) => {
 
