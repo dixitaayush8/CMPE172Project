@@ -5,6 +5,7 @@ import Directory from "./Directory/Directory";
 import HomePage from "./home/HomePage";
 import HistoryPage from "./employees/HistoryPage";
 import DepartmentInfo from "./employees/DepartmentInfo";
+import PositionInfo from "./employees/PositionInfo";
 import WebPortal from "./webportal/WebPortal";
 import Login from "./auth/Login";
 import MuiThemeProvider from "@material-ui/core/styles/MuiThemeProvider";
@@ -81,6 +82,14 @@ class App extends Component {
                     render={props =>
                       {
                       return <DepartmentInfo />
+                    }}
+                    />
+                    <Route
+                    exact
+                    path="/positioninfo"
+                    render={props =>
+                      {
+                      return <PositionInfo />
                     }}
                     />
                     <Route

@@ -198,7 +198,14 @@ class Employee extends Component {
         component={Link}
         to={"/departmentinfo"}
       >
-        Departments
+        Department Analytics
+      </Button>
+      <Button
+        className={classes.searchButton}
+        component={Link}
+        to={"/positioninfo"}
+      >
+        Position Analytics
       </Button>
 
       </div>

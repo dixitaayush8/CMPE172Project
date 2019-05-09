@@ -17,7 +17,7 @@ var con = mysql.createConnection({
 
 con.connect(function(err) {
   if (err) throw err;
-  con.query("select dept_name, dept_no, count(*) as count from employees join dept_emp using(emp_no) join departments using(dept_no) group by dept_no", function (err, result, fields) {
+  con.query("select title, count(*) as count from titles group by title", function (err, result, fields) {
     if (err) throw err;
     console.log(result);
   });
@@ -48,7 +48,13 @@ app.use(cookieParser());
     res.send({ result: result });
   })
 });*/
-
+app.get('/api/positioninfo', (req,res) => {
+  var sql = SqlString.format('select title, count(*) as count from titles group by title')
+  con.query(sql, function (err, result, fields) {
+    if (err) throw err;
+    res.send({ result: result });
+  })
+})
 app.get('/api/departmentinfo',(req, res) => {
   var sql = SqlString.format('select dept_name, dept_no, count(*) as count from employees join dept_emp using(emp_no) join departments using(dept_no) group by dept_no')
   con.query(sql, function (err, result, fields) {
