@@ -16,6 +16,7 @@ const config = {
   issuer: "https://dev-970892.okta.com/oauth2/default",
   redirect_uri: window.location.origin + "/implicit/callback",
   client_id: "0oajfj5gbpPa1yiaf356"
+
 };
 
 class App extends Component {
@@ -28,6 +29,7 @@ class App extends Component {
             client_id={config.client_id}
             redirect_uri={config.redirect_uri}
             onAuthRequired={this.onAuthRequired}
+
           >
             <Directory />
 
@@ -60,7 +62,8 @@ class App extends Component {
                     <Route
                     path="/facebook"
                     component={() =>
-                      (window.location = "http://facebook.com/")
+                      (window.location = "https://www.facebook.com/v3.3/dialog/oauth?client_id=340660639971302&redirect_uri=http%3A%2F%2Flocalhost%3A3000&state=WM6D")
+
                     }
                     />
 
