@@ -17,7 +17,7 @@ var con = mysql.createConnection({
 
 con.connect(function(err) {
   if (err) throw err;
-  con.query("select dept_name, dept_no, count(emp_no) as count, ROUND(avg(salary),2) as average from employees join dept_emp using(emp_no) join departments using(dept_no) join salaries using(emp_no, from_date) group by dept_no", function (err, result, fields) {
+  con.query("select * from salaries where emp_no=10001", function (err, result, fields) {
     if (err) throw err;
     console.log(result);
   });
@@ -26,6 +26,8 @@ con.connect(function(err) {
   console.log('Connected to database.');
 
 });
+
+
 //proxying here
 app.use(express.static(path.join(__dirname, 'public')))
 app.set('views', path.join(__dirname, 'views'));
@@ -36,18 +38,30 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
-//employee = [emp_no: '000', birth_date: '00', first_name: 'Winnie', last_name: 'Australia', gender: 'M', hire_date: '000'];
-/*app.get('/api/create', (req, res) => {
-
-  var sql = SqlString.format('insert into employees set emp_no = ?,birth_date = ?,first_name = ?,last_name = ?,gender = ?,hire_date = ?'
-    , [req.query.emp_no, req.query.birth_date, req.query.first_name, req.query.last_name, req.query.gender, req.query.hire_date])
-  console.log(sql)
+app.get('/api/new_employee', (req, res) => {
+  var sql = SqlString.format('insert into employees set emp_no = ?,birth_date = ?,first_name = ?,last_name = ?,gender = ?,hire_date = ?', [req.query.emp_no, req.query.birth_date, req.query.first_name, req.query.last_name, req.query.gender, req.query.hire_date])
   con.query(sql, function (err, result, fields) {
     if (err) throw err;
-    console.log('Created new Employee', result);
     res.send({ result: result });
   })
-});*/
+});
+
+app.get('/api/insert_salary', (req, res) => {
+  var sql_two = SqlString.format('insert into salaries set salary = ?, emp_no= ?, from_date = CURDATE(), to_date = CURDATE()', [req.query.salary, req.query.emp_no, req.to_date])
+  con.query(sql_two, function (err, result, fields) {
+    if (err) throw err;
+    res.send({ result: result });
+  })
+});
+
+app.get('/api/recentemployees', (req, res) => {
+  var sql = SqlString.format("select * from employees order by hire_date desc limit 50");
+  con.query(sql, function(err, result, fields) {
+    if (err) throw err;
+    res.send({ result: result });
+  })
+})
+
 app.get('/api/positioninfo', (req,res) => {
   var sql = SqlString.format('select title, count(*) as count, ROUND(avg(salary),2) as average from titles inner join salaries using(emp_no, from_date) group by title')
   con.query(sql, function (err, result, fields) {
@@ -68,7 +82,6 @@ app.get('/api/newsalary', (req, res) => {
 
   con.query(sql, function (err, result, fields) {
     if (err) throw err;
-    console.log('Created new salary for Employee', result);
     res.send({ result: result });
   })
 });
@@ -78,12 +91,9 @@ app.get('/api/update', (req, res) => {
 
   var sql = SqlString.format('update employees set birth_date = ?,first_name = ?,last_name = ?,gender = ?,hire_date = ? where emp_no = ?',
     [req.query.birth_date, req.query.first_name, req.query.last_name, req.query.gender, req.query.hire_date, req.query.emp_no])
-  console.log(sql)
-  console.log("just updated employee with employee number 10001");
   con.query(sql,
     req, function (err, result, fields) {
       if (err) throw err
-      console.log(result, result)
     })
 });
 

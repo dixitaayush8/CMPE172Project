@@ -100,6 +100,7 @@ class Employee extends Component {
  <label for="disabled">Gender: </label>
  <input name="disabled" value={this.state.gender} disabled/>
  </form>
+
                       <form>
  <label for="disabled">Hiring Date: </label>
  <input name="disabled" value={this.state.hire_date} disabled/>
@@ -206,6 +207,13 @@ class Employee extends Component {
         to={"/positioninfo"}
       >
         Position Analytics
+      </Button>
+      <Button
+        className={classes.searchButton}
+        component={Link}
+        to={"/insertemployee"}
+      >
+        Insert Employee
       </Button>
 
       </div>

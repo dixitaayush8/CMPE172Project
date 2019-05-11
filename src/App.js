@@ -6,6 +6,7 @@ import HomePage from "./home/HomePage";
 import HistoryPage from "./employees/HistoryPage";
 import DepartmentInfo from "./employees/DepartmentInfo";
 import PositionInfo from "./employees/PositionInfo";
+import InsertEmployee from "./employees/InsertEmployee"
 import WebPortal from "./webportal/WebPortal";
 import Login from "./auth/Login";
 import MuiThemeProvider from "@material-ui/core/styles/MuiThemeProvider";
@@ -31,11 +32,6 @@ class App extends Component {
             <Directory />
 
             <Switch>
-              <Route
-                exact
-                path="/github"
-                component={() => (window.location = "http://github.com")}
-              />
               <Route exact path="/" component={HomePage} />
             </Switch>
             <Route
@@ -90,6 +86,14 @@ class App extends Component {
                     render={props =>
                       {
                       return <PositionInfo />
+                    }}
+                    />
+                    <Route
+                    exact
+                    path="/insertemployee"
+                    render={props =>
+                      {
+                      return <InsertEmployee />
                     }}
                     />
                     <Route
