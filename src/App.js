@@ -63,7 +63,6 @@ class App extends Component {
                     path="/facebook"
                     component={() =>
                       (window.location = "https://www.facebook.com/v3.3/dialog/oauth?client_id=340660639971302&redirect_uri=http%3A%2F%2Flocalhost%3A3000&state=WM6D")
-
                     }
                     />
 

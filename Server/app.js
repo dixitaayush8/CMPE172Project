@@ -47,7 +47,7 @@ app.get('/api/new_employee', (req, res) => {
 });
 
 app.get('/api/insert_salary', (req, res) => {
-  var sql_two = SqlString.format('insert into salaries set salary = ?, emp_no= ?, from_date = CURDATE(), to_date = CURDATE()', [req.query.salary, req.query.emp_no, req.to_date])
+  var sql_two = SqlString.format('insert into salaries set salary = ?, emp_no= ?, from_date = CURDATE(), to_date = ?', [req.query.salary, req.query.emp_no, req.query.to_date])
   con.query(sql_two, function (err, result, fields) {
     if (err) throw err;
     res.send({ result: result });
